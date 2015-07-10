@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-// update user
-
 public class UpdateActivity extends AppCompatActivity {
     Bundle b;
     String user_name, user_pass, new_user_name;

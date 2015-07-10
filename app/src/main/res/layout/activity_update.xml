@@ -30,7 +30,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update User"
+        android:text="Update"
         android:id="@+id/updateButton"
         android:layout_below="@+id/usernameText"
         android:layout_alignParentLeft="true"

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SQLiteLoginApp</string>
+
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_delete">DeleteActivity</string>
+    <string name="HiUser">Hi User... Delete your account from here</string>
+    <string name="title_activity_update">UpdateActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="UpdateUser">Hi User... Update user name here</string>
+</resources>

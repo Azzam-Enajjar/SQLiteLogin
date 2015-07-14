@@ -10,4 +10,5 @@
     <string name="title_activity_update">UpdateActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="UpdateUser">Hi User... Update user name here</string>
+    <string name="title_activity_asthma_undone">AsthmaUndone</string>
 </resources>

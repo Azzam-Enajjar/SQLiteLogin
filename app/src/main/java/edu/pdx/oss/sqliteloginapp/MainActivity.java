@@ -48,4 +48,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtras(b);
         startActivity(intent);
     }
+
+    public void openAsthmaUndone(View view){
+        Intent intent = new Intent(this, AsthmaUndone.class);
+        startActivity(intent);
+    }
 }

@@ -12,9 +12,14 @@ public class TableData {
         public static final String DATABASE_NAME = "user_info";
 
         public static final String TABLE_NAME = "reg_info";
-
         public static final String USER_NAME = "user_name";
         public static final String USER_PASS = "user_pass";
+        public static final String USER_TEST = "user_test";
+
+        public static final String TABLE_DONE = "done";
+        public static final String LOG_DATE ="log_date";
+
+
     }
 
 }

@@ -8,22 +8,25 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DatabaseOperations extends SQLiteOpenHelper {
-    public static final int database_version = 1;
-    public String CREATE_QUERY = "CREATE TABLE " + TableData.TableInfo.TABLE_NAME + "(" + TableData.TableInfo.USER_NAME + " TEXT, " + TableData.TableInfo.USER_PASS + " TEXT);";
+    public static final int database_version = 4;
+    public String CREATE_QUERY = "CREATE TABLE " + TableData.TableInfo.TABLE_NAME + "(" + TableData.TableInfo.USER_NAME + " TEXT, " + TableData.TableInfo.USER_PASS + " TEXT, " + TableData.TableInfo.USER_TEST + " TEXT);";
+    public String CREATE_QUERY1 = "CREATE TABLE " + TableData.TableInfo.TABLE_DONE + "(" + TableData.TableInfo.LOG_DATE + " TEXT);";
 
     public DatabaseOperations(Context context) {
-        super(context, TableData.TableInfo.DATABASE_NAME, null, database_version);
-        Log.d("Database operations", "Database Created");
+    super(context, TableData.TableInfo.DATABASE_NAME, null, database_version);
+    Log.d("Database operations", "Database Created");
     }
 
     @Override
     public void onCreate(SQLiteDatabase sdb) {
-        sdb.execSQL(CREATE_QUERY);
-        Log.d("Database operations", "Table Created");
+    sdb.execSQL(CREATE_QUERY);
+    Log.d("Database operations", "Table Login Created");
+    sdb.execSQL(CREATE_QUERY1);
+    Log.d("Database operations", "Table Done Created");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase sdb, int oldVersion, int newVersion) {
 
     }
 
@@ -36,10 +39,26 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Log.d("Database operations", "One row inserted");
     }
 
+    public void putInformation1(DatabaseOperations dop, String done_date){
+        SQLiteDatabase SQ = dop.getWritableDatabase();
+        ContentValues  cv = new ContentValues();
+
+        cv.put(TableData.TableInfo.LOG_DATE, done_date);
+        long k = SQ.insert(TableData.TableInfo.TABLE_DONE, null, cv);
+        Log.d("Database operations", "The date has been added successfully..");
+    }
+
     public Cursor getInformation(DatabaseOperations dop){
         SQLiteDatabase SQ = dop.getReadableDatabase();
         String[] columns = {TableData.TableInfo.USER_NAME, TableData.TableInfo.USER_PASS};
         Cursor CR = SQ.query(TableData.TableInfo.TABLE_NAME, columns, null, null, null, null, null);
+        return CR;
+    }
+
+    public Cursor getInformation1(DatabaseOperations dop){
+        SQLiteDatabase SQ = dop.getReadableDatabase();
+        String[] columns = {TableData.TableInfo.LOG_DATE};
+        Cursor CR = SQ.query(TableData.TableInfo.TABLE_DONE, columns, null, null, null, null, null);
         return CR;
     }
 

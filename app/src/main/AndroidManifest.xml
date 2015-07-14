@@ -32,6 +32,10 @@
             android:name=".UpdateActivity"
             android:label="@string/title_activity_update" >
         </activity>
+        <activity
+            android:name=".AsthmaUndone"
+            android:label="@string/title_activity_asthma_undone" >
+        </activity>
     </application>
 
 </manifest>

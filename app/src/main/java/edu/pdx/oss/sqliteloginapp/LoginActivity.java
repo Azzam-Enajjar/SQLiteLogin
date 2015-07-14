@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 public class LoginActivity extends AppCompatActivity {
     EditText USER_NAME_TEXT, USER_PASS_TEXT;
     String user_name, user_pass;

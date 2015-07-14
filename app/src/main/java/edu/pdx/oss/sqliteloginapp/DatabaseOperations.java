@@ -86,4 +86,5 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         values.put(TableData.TableInfo.USER_NAME, new_user_name);
         SQ.update(TableData.TableInfo.TABLE_NAME, values, selection, args);
     }
+
 }

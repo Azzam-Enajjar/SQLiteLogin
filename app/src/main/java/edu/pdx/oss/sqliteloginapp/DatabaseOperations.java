@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DatabaseOperations extends SQLiteOpenHelper {
-    public static final int database_version = 4;
+    public static final int database_version = 5;
     public String CREATE_QUERY = "CREATE TABLE " + TableData.TableInfo.TABLE_NAME + "(" + TableData.TableInfo.USER_NAME + " TEXT, " + TableData.TableInfo.USER_PASS + " TEXT, " + TableData.TableInfo.USER_TEST + " TEXT);";
     public String CREATE_QUERY1 = "CREATE TABLE " + TableData.TableInfo.TABLE_DONE + "(" + TableData.TableInfo.LOG_DATE + " TEXT);";
 
@@ -85,6 +85,18 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(TableData.TableInfo.USER_NAME, new_user_name);
         SQ.update(TableData.TableInfo.TABLE_NAME, values, selection, args);
+    }
+
+    public void deleteLogDate(DatabaseOperations dop, String logDate){
+        SQLiteDatabase SQ = dop.getWritableDatabase();
+        String selection = TableData.TableInfo.LOG_DATE + " = ?";
+        String args[] = {logDate};
+        SQ.delete(TableData.TableInfo.TABLE_DONE, selection, args);
+    }
+
+    public void deleteAll(DatabaseOperations dop){
+        SQLiteDatabase SQ = dop.getWritableDatabase();
+        SQ.delete(TableData.TableInfo.TABLE_DONE, null, null);
     }
 
 }

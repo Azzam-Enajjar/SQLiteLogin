@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class DatabaseOperations extends SQLiteOpenHelper {
     public static final int database_version = 5;
     public String CREATE_QUERY = "CREATE TABLE " + TableData.TableInfo.TABLE_NAME + "(" + TableData.TableInfo.USER_NAME + " TEXT, " + TableData.TableInfo.USER_PASS + " TEXT, " + TableData.TableInfo.USER_TEST + " TEXT);";
@@ -39,11 +42,10 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         Log.d("Database operations", "One row inserted");
     }
 
-    public void putInformation1(DatabaseOperations dop, String done_date){
+    public void putInformation1(DatabaseOperations dop, String doneDate){
         SQLiteDatabase SQ = dop.getWritableDatabase();
         ContentValues  cv = new ContentValues();
-
-        cv.put(TableData.TableInfo.LOG_DATE, done_date);
+        cv.put(TableData.TableInfo.LOG_DATE, doneDate);
         long k = SQ.insert(TableData.TableInfo.TABLE_DONE, null, cv);
         Log.d("Database operations", "The date has been added successfully..");
     }
@@ -92,6 +94,15 @@ public class DatabaseOperations extends SQLiteOpenHelper {
         String selection = TableData.TableInfo.LOG_DATE + " = ?";
         String args[] = {logDate};
         SQ.delete(TableData.TableInfo.TABLE_DONE, selection, args);
+    }
+
+    public Integer numberOfDays(DatabaseOperations dop, String startDate, String endDate){
+        SQLiteDatabase SQ = dop.getReadableDatabase();
+        String columns[] = {TableData.TableInfo.LOG_DATE};
+        String selection = TableData.TableInfo.LOG_DATE + " BETWEEN ? AND ?";
+        String args[] = {startDate, endDate};
+        Cursor CR = SQ.query(TableData.TableInfo.TABLE_DONE, columns, selection, args, null, null, null);
+        return CR.getCount();
     }
 
     public void deleteAll(DatabaseOperations dop){

@@ -36,10 +36,6 @@
             android:name=".AsthmaUndone"
             android:label="@string/title_activity_asthma_undone" >
         </activity>
-        <activity
-            android:name=".ReportActivity"
-            android:label="@string/title_activity_report" >
-        </activity>
     </application>
 
 </manifest>

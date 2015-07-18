@@ -13,4 +13,7 @@
     <string name="title_activity_asthma_undone">AsthmaUndone</string>
     <string name="title_activity_grid_view">GridViewActivity</string>
     <string name="title_activity_report">ReportActivity</string>
+    <string name="title_activity_main_activity2">MainActivity2Activity</string>
+    <string name="title_activity_first">FirstActivity</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
 </resources>
